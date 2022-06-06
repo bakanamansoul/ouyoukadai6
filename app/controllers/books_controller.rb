@@ -8,6 +8,7 @@ before_action :correct_user, only: [:edit, :update, :destroy]
 
   def show
     @book = Book.find(params[:id])
+    @book_comment = BookComment.new
     @book_new = Book.new
     @user = @book.user
   end
