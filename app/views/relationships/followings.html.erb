@@ -1,5 +1,6 @@
 <h1>Follow Users</h1>
-<table>
+<% if current_user.following?(@users) %>
+<table class='table'>
   <thead>
     <tr>
       <th>image</th>
@@ -9,9 +10,14 @@
   </thead>
   <tbody>
     <tr>
-      <td>
-        
-      </td>
+      <td><%= image_tag user.get_profile_image, size:'100x100' %></td>
+      <td><%= user.name %></td>
+      <td>フォロー数: <%= user.followings.count %></td>
+      <td>フォロワー数: <%= user.followers.count %></td>
+      <td><%= link_to 'Show', book, class: "book_#{book.id}" %><</td>
     </tr>
   </tbody>
 </table>
+<% else %>
+  <p>ユーザーはいません</p>
+<% end %>
